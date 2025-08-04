@@ -1,4 +1,4 @@
-const { processdataset } = require('./index');
+const { processdataset } = require('../src/index');
 
 let dataset = 'dataset file path';
 
