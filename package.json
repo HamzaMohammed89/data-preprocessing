@@ -2,7 +2,7 @@
   "name": "data-preprocessing",
   "version": "1.0.0",
   "description": "A lightweight data preprocessing library for cleaning datasets—handles missing values, duplicates, and feature correlations with ease.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +15,7 @@
   ],
   "author": "Hamza Mohammed",
   "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/HamzaMohammed89/data-preprocessing.git" },
   "dependencies": {
     "convert-csv-to-json": "2.50.0"
   }
