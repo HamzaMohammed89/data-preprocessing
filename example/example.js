@@ -5,6 +5,7 @@ let dataset = 'dataset file path';
 const result = processdataset({
         dataset, 
         numeric_threshold :0.7, 
+        remove_character_columns: true,
         remove_constant_columns: true, 
         remove_duplicate_columns: true, 
         remove_correlated_columns: true, 
