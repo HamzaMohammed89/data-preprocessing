@@ -41,7 +41,7 @@ const drop_empty_col = function (options) {
       }
     }
     if ((check_empty_column.length === 0)) {
-      // entire column is empty, peforming column deletion
+      // Entire column is empty, peforming column deletion
       for (let empty_col = 0; empty_col < data.length; empty_col++) {
 
         delete data[empty_col][_new_column_name];

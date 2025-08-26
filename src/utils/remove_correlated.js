@@ -21,7 +21,7 @@ const rm_correlated_cols = function (options) {
         let positive_correlation = correlation_val;
         let negative_correlation = -correlation_val;
 
-        //get column objects with values
+        //Get column objects with values
         const column_object = {};
         let column_name = Object.keys(data[0]);
         for (let col = 0; col < column_name.length; col++) {
@@ -37,7 +37,7 @@ const rm_correlated_cols = function (options) {
             }
         }
 
-        // find column permutations and combonations for comparision
+        // Find column permutations and combonations for comparision
         let corelated_columns = [];
         for (let i = 0; i < column_headers.length; i++) {
             for (let j = i + 1; j < column_headers.length; j++) {
@@ -76,7 +76,7 @@ const rm_correlated_cols = function (options) {
                     options.processing_results.correlated_columns.push(sec_col);
                     corelated_columns.push(sec_col);
 
-                    // delete correlated column
+                    // Delete correlated column
                     for (let del_col = 0; del_col < data.length; del_col++) {
                         delete data[del_col][sec_col];
                     }

@@ -21,7 +21,7 @@ const rm_const_col = function (options) {
                 }
             }
             if (check_const_column.every((val, const_col, arr) => val === arr[0])) {
-                // column is const, peforming column deletion
+                // Column is const, peforming column deletion
                 for (let const_col_del = 0; const_col_del < data.length; const_col_del++) {
                     delete data[const_col_del][_new_column_name];
                     if (!options['processing_results']['constant_columns'].includes(_new_column_name)) {

@@ -27,6 +27,19 @@ Columns that do not meet this threshold will be considered non-numeric and may b
 
 ---
 
+#### ✅ `remove_character_columns` (default: `true`)
+
+Controls whether columns containing **character or alphanumeric values** are automatically removed.  
+
+- When set to `true` (default), such columns will be excluded during preprocessing.  
+- When set to `false`, character/alphanumeric columns (and any rows containing them) will be retained.  
+  - In this case, the utility will still clean empty rows and columns, but it will **not** perform the following checks:
+    - Removal of constant columns  
+    - Removal of duplicate columns  
+    - Removal of correlated columns  
+
+---
+
 #### ✅ `remove_constant_columns` (default: `true`)
 
 Enables automatic removal of **constant columns** — i.e., columns where all values are the same or contain only one unique value.

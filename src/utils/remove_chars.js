@@ -9,29 +9,37 @@ const purge_constant = require('./remove_constants');
 const rm_char_col = function (options) {
 
     let data = options.data;
+    let rm_char_cols = options.processing_selection.remove_character_columns;
     let column_name = Object.keys(data[0]);
 
-    column_name.forEach(_new_column_name => {
-        const check_string_column = [];
-        for (let col_check = 0; col_check < data.length; col_check++) {
-            if (typeof (+data[col_check][_new_column_name]) === 'number' && !isNaN(+data[col_check][_new_column_name])) {
-                check_string_column.push(data[col_check][_new_column_name]);
+    // If remove_character_columns option set to true
+    if (rm_char_cols) {
+        column_name.forEach(_new_column_name => {
+            const check_string_column = [];
+            for (let col_check = 0; col_check < data.length; col_check++) {
+                if (typeof (+data[col_check][_new_column_name]) === 'number' && !isNaN(+data[col_check][_new_column_name])) {
+                    check_string_column.push(data[col_check][_new_column_name]);
+                }
             }
-        }
-        if ((check_string_column.length === 0) || (check_string_column.length === 1)) {
+            if ((check_string_column.length === 0) || (check_string_column.length === 1)) {
 
-            // entire column has characters, peforming column deletion
-            for (let empty_col = 0; empty_col < data.length; empty_col++) {
-                delete data[empty_col][_new_column_name];
-                if (!options['processing_results']['char_columns'].includes(_new_column_name)) {
-                    options.processing_results.char_columns.push(_new_column_name);
-                };
+                // Entire column has characters, peforming column deletion
+                for (let empty_col = 0; empty_col < data.length; empty_col++) {
+                    delete data[empty_col][_new_column_name];
+                    if (!options['processing_results']['char_columns'].includes(_new_column_name)) {
+                        options.processing_results.char_columns.push(_new_column_name);
+                    };
+                }
+                data = data;
             }
-            data = data;
-        }
-    });
-    options.data = data;
-    return rm_char_row_col(options);
+        });
+        options.data = data;
+        return rm_char_row_col(options);
+    }
+    else {
+        // If remove_character_columns option set to false
+        return options;
+    }
 }
 
 

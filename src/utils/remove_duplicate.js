@@ -16,7 +16,7 @@ const rm_dup_cols = function (options) {
         let data = options.data;
         let column_headers = Object.keys(data[0]);
 
-        //get column objects with values
+        //Get column objects with values
         const column_object = {};
         let column_name = Object.keys(data[0]);
         for (let col = 0; col < column_name.length; col++) {
@@ -32,7 +32,7 @@ const rm_dup_cols = function (options) {
             }
         }
 
-        // find column permutations and combonations for comparision
+        // Find column permutations and combonations for comparision
         for (let i = 0; i < column_headers.length; i++) {
             for (let j = i + 1; j < column_headers.length; j++) {
                 let first_col = column_headers[i];
@@ -41,7 +41,7 @@ const rm_dup_cols = function (options) {
                 if (column_object[first_col].every((val, index) => val === column_object[sec_col][index])) {
                     options.processing_results.duplicate_columns.push(sec_col);
 
-                    //delete duplicate object
+                    //Delete duplicate object
                     for (let del_col = 0; del_col < data.length; del_col++) {
                         delete data[del_col][sec_col];
                     }

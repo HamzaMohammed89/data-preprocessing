@@ -3,7 +3,7 @@
 const dataset_to_json = require('convert-csv-to-json');
 const data_cleansing = require('./remove_empty');
 
-const processdataset = function ({ dataset, numeric_threshold = 0.7, remove_constant_columns = true, remove_duplicate_columns = true, remove_correlated_columns = true, correlation_coefficient_magnitude = 0.8 }) {
+const processdataset = function ({ dataset, numeric_threshold = 0.7, remove_character_columns = true, remove_constant_columns = true, remove_duplicate_columns = true, remove_correlated_columns = true, correlation_coefficient_magnitude = 0.8 }) {
 
     let options = {
         processing_results: {
@@ -16,6 +16,7 @@ const processdataset = function ({ dataset, numeric_threshold = 0.7, remove_cons
         },
         processing_selection: {
             numeric_threshold: numeric_threshold,
+            remove_character_columns: remove_character_columns,
             remove_constant_columns: remove_constant_columns,
             remove_duplicate_columns: remove_duplicate_columns,
             remove_correlated_columns: remove_correlated_columns,
